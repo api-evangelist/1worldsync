@@ -1,0 +1,41 @@
+generated: '2026-07-17'
+method: searched
+source: https://developer.1worldsync.com/read-api-2-0-documentation/
+docs: https://developer.1worldsync.com/wp-content/uploads/2022/11/1WorldSync_Content1_API_HMAC_Guide.pdf
+summary:
+  types: [hmac]
+  api_key_in: [header, query]
+  oauth2_flows: []
+  note: >-
+    1WorldSync Content1 APIs use HMAC-signed requests. There is no OpenAPI
+    securityScheme declared; authentication is carried in request headers and a
+    query parameter. Credentials (an 8-character alphanumeric app_id and a
+    32-character secret key) are issued at registration; separate credentials are
+    issued for the Pre-Production environment.
+schemes:
+- name: HMAC
+  type: hmac
+  description: >-
+    Each request is signed by building a canonical string and computing an
+    HMAC-SHA256 hash with the account secret key. The signature (hashcode) proves
+    the sender identity.
+  parameters:
+  - name: appid
+    in: header
+    required: true
+    description: 8-character alphanumeric application identifier issued at registration.
+  - name: hashcode
+    in: header
+    required: true
+    description: HMAC signature (hash_code) of the request computed with the secret key.
+  - name: timestamp
+    in: query
+    required: true
+    description: UTC timestamp included in the signed string.
+  - name: gln
+    in: header
+    required: false
+    description: Optional Global Location Number scoping the request.
+  sources:
+  - openapi/1worldsync-content1-openapi-original.json
+  - https://developer.1worldsync.com/wp-content/uploads/2022/11/1WorldSync_Content1_API_HMAC_Guide.pdf
