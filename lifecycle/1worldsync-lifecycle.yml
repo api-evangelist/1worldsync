@@ -1,0 +1,28 @@
+generated: '2026-07-17'
+method: searched
+source: https://developer.1worldsync.com/
+versioning:
+  scheme: uri-path
+  current: V1
+  notes: >-
+    The Content1 Read API is exposed under /V1/ path segments. The read surface is
+    marketed as "IM Read API 2.0", superseding the legacy IM Read API.
+deprecation:
+  policy: >-
+    1WorldSync publishes discontinuation notices on its developer portal and
+    supersedes legacy APIs with new major versions.
+  examples:
+  - api: IM Read API (Legacy)
+    status: discontinued
+    sunset_date: '2025-03-01'
+    replaced_by: IM Read API 2.0
+    docs: https://developer.1worldsync.com/read-api-documention/
+environments:
+- name: Production
+  base_url: https://content1-api.1worldsync.com
+- name: Pre-Production
+  base_url: https://content1-api.preprod.1worldsync.com
+  note: Requires separate client id and secret key from the production account.
+status_page: null
+sla: null
+deprecated_operations: []

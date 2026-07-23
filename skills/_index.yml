@@ -1,0 +1,11 @@
+generated: '2026-07-17'
+method: generated
+skills:
+- file: 1worldsync-search-products.md
+  name: Search 1WorldSync products
+  api: openapi/1worldsync-content1-openapi-original.json
+  operations: [fetchItemCountByCriteria, fetchItemByCriteria]
+- file: 1worldsync-fetch-hierarchy.md
+  name: Fetch 1WorldSync product hierarchies
+  api: openapi/1worldsync-content1-openapi-original.json
+  operations: [fetchHierarchiesByCriteria]

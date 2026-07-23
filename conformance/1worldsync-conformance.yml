@@ -1,0 +1,29 @@
+generated: '2026-07-17'
+method: searched
+source: https://1worldsync.com/security/
+docs: https://developer.1worldsync.com/read-api-2-0-documentation/
+standards:
+- id: gs1-gdsn
+  conforms: true
+  evidence: 1WorldSync is a GS1-certified GDSN (Global Data Synchronization Network) data pool.
+- id: soc2-type2
+  conforms: true
+  evidence: SOC 2 Type 2 attestation (Security, Availability, Confidentiality), A-LIGN, 2023-07-01..2024-06-30.
+- id: iso-27001
+  conforms: true
+  evidence: ISO/IEC 27001:2022 certification recertified June 2025 (A-LIGN).
+- id: hmac-request-signing
+  conforms: true
+  evidence: All Content1 API requests are HMAC-SHA256 signed (appid + hashcode + timestamp).
+- id: oauth2
+  conforms: false
+  evidence: No OAuth2 securityScheme; authentication is HMAC-based.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use a custom JSON envelope {requestId, code, reason}, not application/problem+json.
+- id: openapi-3
+  conforms: true
+  evidence: OpenAPI 3.0.1 document published at /v3/api-docs.
+- id: pagination
+  conforms: true
+  evidence: fetch/hierarchy operations accept a pageSize query parameter (max 1000).

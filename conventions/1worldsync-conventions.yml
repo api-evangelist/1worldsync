@@ -1,0 +1,35 @@
+generated: '2026-07-17'
+method: searched
+source: openapi/1worldsync-content1-openapi-original.json
+docs: https://developer.1worldsync.com/read-api-2-0-documentation/
+authentication:
+  style: hmac
+  detail: HMAC-SHA256 signed requests (appid + hashcode headers, timestamp query param).
+  see: authentication/1worldsync-authentication.yml
+idempotency:
+  supported: false
+  note: No idempotency-key header is documented; read operations are POST-with-body queries and are naturally idempotent.
+pagination:
+  style: page-size
+  params:
+  - pageSize
+  max_page_size: 1000
+  note: fetch and hierarchy operations accept a pageSize query parameter; exceeding 1000 returns 500.
+request_tracing:
+  field: requestId
+  location: error/response body
+  note: The server generates a requestId to track processing; it is echoed in error responses.
+  see: errors/1worldsync-error-codes.yml
+versioning:
+  style: uri-path
+  current: V1
+  see: lifecycle/1worldsync-lifecycle.yml
+error_envelope:
+  shape: '{requestId, code, reason}'
+  media_type: application/json
+  see: errors/1worldsync-error-codes.yml
+rate_limit_signaling:
+  documented: false
+media_types:
+  request: application/json
+  response: application/json

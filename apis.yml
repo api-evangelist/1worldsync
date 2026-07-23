@@ -1,8 +1,29 @@
 aid: 1worldsync
 name: 1WorldSync
-description: 1WorldSync is a company surfaced as a portfolio company of battery-ventures and added to
-  the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: >-
+  1WorldSync is the leading product content network and a GS1-certified GDSN data
+  pool, helping consumer goods brands, manufacturers, and retailers create, manage,
+  syndicate, and verify trusted product content across the digital shelf and the
+  physical supply chain. Its Content1 platform exposes REST APIs for product master
+  data — the Content1 Read API (product search, fetch, count, and hierarchy
+  retrieval), the Item Management Inbound API (add, update, delete, and link items
+  and hierarchies), a Digital Asset Management (DAM) API for images and rich media,
+  and a User Management API (UMA) — all authenticated with HMAC-signed requests
+  using an app_id and a secret key. 1WorldSync serves CPG, grocery, healthcare,
+  foodservice, and DIY sectors and is SOC 2 Type 2 and ISO/IEC 27001:2022 certified.
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://1worldsync.com/wp-content/uploads/2024/10/Untitled-design-49.png
 url: https://raw.githubusercontent.com/api-evangelist/1worldsync/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -15,9 +36,97 @@ created: '2026-07-17'
 modified: '2026-07-17'
 tags:
 - Company
-apis: []
+- Product Content
+- GDSN
+- Data Syndication
+- Master Data
+- Digital Shelf
+- Product Information Management
+- PIM
+- CPG
+- Retail
+- GS1
+apis:
+- aid: 1worldsync:1worldsync-fetchproduct-api
+  name: 1WorldSync FetchProduct API
+  description: The FetchProduct API from 1WorldSync — 3 operation(s) for fetchproduct.
+  humanURL: https://developer.1worldsync.com/read-api-2-0-documentation/
+  baseURL: https://content1-api.1worldsync.com
+  tags:
+  - FetchProduct
+  properties:
+  - type: OpenAPI
+    url: openapi/1worldsync-fetchproduct-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/1worldsync-error-codes.yml
+  - type: DataModel
+    url: data-model/1worldsync-data-model.yml
+common:
+- type: AgenticAccess
+  url: agentic-access/1worldsync-agentic-access.yml
+- type: DomainSecurity
+  url: security/1worldsync-domain-security.yml
+- type: Website
+  url: https://1worldsync.com/
+- type: DeveloperPortal
+  url: https://developer.1worldsync.com/
+- type: Documentation
+  url: https://developer.1worldsync.com/read-api-2-0-documentation/
+- type: APIReference
+  url: https://content1-api.1worldsync.com/swagger/index.html
+- type: GettingStarted
+  url: https://developer.1worldsync.com/register
+- type: SignUp
+  url: https://developer.1worldsync.com/register
+- type: Support
+  url: https://1worldsync.com/resource-center/support/contact-support/
+- type: HelpCenter
+  url: https://community.1worldsync.com/
+- type: Pricing
+  url: https://1worldsync.com/subscription-plans/
+- type: TermsOfService
+  url: https://1worldsync.com/terms-of-use/
+- type: PrivacyPolicy
+  url: https://1worldsync.com/privacy-policy/
+- type: Postman
+  url: https://documenter.getpostman.com/view/9015441/2sB3BDKBGR
+- type: Compliance
+  url: https://1worldsync.com/security/
+- type: TrustCenter
+  url: https://1worldsync.com/security/
+- type: Authentication
+  url: authentication/1worldsync-authentication.yml
+- type: Packages
+  url: packages/1worldsync-packages.yml
+- type: Conventions
+  url: conventions/1worldsync-conventions.yml
+- type: WellKnown
+  url: well-known/1worldsync-well-known.yml
+- type: MCPServer
+  url: mcp/1worldsync-mcp.yml
+- type: LLMsTxt
+  url: llms/1worldsync-llms.txt
+- type: Conformance
+  url: conformance/1worldsync-conformance.yml
+- type: Lifecycle
+  url: lifecycle/1worldsync-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/1worldsync-lifecycle.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Sandbox
+  url: sandbox/1worldsync-sandbox.yml
+- type: ErrorCatalog
+  url: errors/1worldsync-error-codes.yml
+- type: DataModel
+  url: data-model/1worldsync-data-model.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

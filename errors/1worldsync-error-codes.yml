@@ -1,0 +1,41 @@
+generated: '2026-07-17'
+method: derived
+source: openapi/1worldsync-content1-openapi-original.json
+docs: https://developer.1worldsync.com/read-api-2-0-documentation/
+format: custom-json
+envelope:
+  schema: ItemFetchError
+  media_type: application/json
+  fields:
+  - name: requestId
+    description: Unique id generated server-side to track processing of this request.
+  - name: code
+    description: Error code (e.g. INTERNAL_SERVER_ERROR, REQUIRED_HEADER_APPID_MISSING).
+  - name: reason
+    description: Human-readable error reason.
+  example: '{"requestId":1334426,"code":"REQUIRED_HEADER_APPID_MISSING","reason":"appId is missing in header"}'
+responses:
+- status: 401
+  description: Authorization, authentication, and validation errors.
+  source_operations:
+  - openapi/1worldsync-content1-openapi-original.json#fetchItemCountByCriteria
+  - openapi/1worldsync-content1-openapi-original.json#fetchItemByCriteria
+  - openapi/1worldsync-content1-openapi-original.json#fetchHierarchiesByCriteria
+- status: 204
+  description: No products found for the given criteria.
+  source_operations:
+  - openapi/1worldsync-content1-openapi-original.json#fetchItemByCriteria
+- status: 500
+  description: >-
+    Processing error, or page size greater than 1000 on fetch/hierarchy operations.
+  source_operations:
+  - openapi/1worldsync-content1-openapi-original.json#fetchItemCountByCriteria
+  - openapi/1worldsync-content1-openapi-original.json#fetchItemByCriteria
+  - openapi/1worldsync-content1-openapi-original.json#fetchHierarchiesByCriteria
+codes:
+- code: INTERNAL_SERVER_ERROR
+  status: 500
+  meaning: An internal error occurred while processing the request.
+- code: REQUIRED_HEADER_APPID_MISSING
+  status: 401
+  meaning: The required appId header is missing from the request.

@@ -1,0 +1,21 @@
+generated: '2026-07-17'
+method: searched
+source: https://pypi.org/project/oneworldsync/
+note: >-
+  No first-party 1WorldSync client SDK is published to a public package registry.
+  1WorldSync distributes a reference Java SDK and code samples through its developer
+  portal rather than a package registry. The Python client below is a well-maintained
+  third-party/community library (by Michael McGarrah), not an official release, so it
+  is recorded with official:false and no `type: SDKs` pointer is emitted.
+packages:
+- language: python
+  registry: pypi
+  name: oneworldsync
+  url: https://pypi.org/project/oneworldsync/
+  install: pip install oneworldsync
+  repository: https://github.com/mcgarrah/oneworldsync_python
+  docs: https://oneworldsync-python.readthedocs.io/
+  official: false
+  description: >-
+    Community Python client for the 1WorldSync Content1 API with HMAC
+    authentication handling, typed response models, and an `ows` command-line tool.

@@ -1,0 +1,20 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for 1WorldSync Content1 API
+  version: 1.0.0
+extends: openapi/1worldsync-content1-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-rating: 3
+    x-api-evangelist-provider: 1worldsync
+    x-authentication: HMAC-SHA256 (appid + hashcode headers, timestamp query)
+    x-artifacts:
+      authentication: authentication/1worldsync-authentication.yml
+      conventions: conventions/1worldsync-conventions.yml
+      errors: errors/1worldsync-error-codes.yml
+      data_model: data-model/1worldsync-data-model.yml
+      lifecycle: lifecycle/1worldsync-lifecycle.yml
+- target: $.info
+  update:
+    x-agentic-access: agentic-access/1worldsync-agentic-access.yml

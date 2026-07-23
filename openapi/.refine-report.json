@@ -1,0 +1,14 @@
+{
+  "provider": "1worldsync",
+  "sources": [
+    "1worldsync-fetchproduct-api-openapi.yml"
+  ],
+  "outputs": [
+    "1worldsync-fetchproduct-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

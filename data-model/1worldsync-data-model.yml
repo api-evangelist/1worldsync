@@ -1,0 +1,75 @@
+generated: '2026-07-17'
+method: derived
+source: openapi/1worldsync-content1-openapi-original.json
+entities:
+- name: Item
+  description: A product master-data record returned from the Item Management platform.
+- name: ItemFetchResult
+  description: Result envelope wrapping a list of products.
+- name: ItemCount
+  description: Product count for a search criteria.
+- name: ItemFetchHierarchy
+  description: A node in a product hierarchy; self-referential via children.
+- name: HierarchyDetails
+  description: A single hierarchy composed of hierarchy nodes.
+- name: HierarchyFetchResult
+  description: Result envelope wrapping a list of hierarchies.
+- name: ItemFetchRequest
+  description: Search criteria for fetching items.
+- name: FetchHierarchyRequest
+  description: Search criteria for fetching hierarchies.
+- name: LastModifiedDate
+  description: A from/to date-range filter.
+- name: DateField
+  description: A date value used in range filters.
+- name: SortField
+  description: A field-and-direction sort specifier.
+- name: FetchFields
+  description: The set of fields to return.
+- name: ItemFetchError
+  description: Error envelope (requestId, code, reason).
+relationships:
+- from: ItemFetchResult
+  to: Item
+  kind: has_many
+  via: items
+- from: HierarchyFetchResult
+  to: HierarchyDetails
+  kind: has_many
+  via: hierarchies
+- from: HierarchyDetails
+  to: ItemFetchHierarchy
+  kind: has_many
+  via: hierarchy
+- from: ItemFetchHierarchy
+  to: ItemFetchHierarchy
+  kind: has_many
+  via: children
+- from: ItemFetchRequest
+  to: LastModifiedDate
+  kind: has_one
+  via: lastModifiedDate
+- from: ItemFetchRequest
+  to: SortField
+  kind: has_many
+  via: sortFields
+- from: ItemFetchRequest
+  to: FetchFields
+  kind: has_one
+  via: fields
+- from: FetchHierarchyRequest
+  to: LastModifiedDate
+  kind: has_one
+  via: lastModifiedDate
+- from: FetchHierarchyRequest
+  to: SortField
+  kind: has_many
+  via: sortFields
+- from: LastModifiedDate
+  to: DateField
+  kind: has_one
+  via: from
+- from: LastModifiedDate
+  to: DateField
+  kind: has_one
+  via: to

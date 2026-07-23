@@ -1,0 +1,27 @@
+generated: '2026-07-17'
+method: searched
+probe: true
+url: https://1worldsync.com/security/
+certifications:
+- SOC 2 Type 2
+- ISO/IEC 27001:2022
+compliance_programs:
+- name: SOC 2 Type 2 Attestation
+  criteria: Security, Availability, and Confidentiality (AICPA Trust Services Criteria)
+  period: 2023-07-01 to 2024-06-30
+  auditor: A-LIGN
+- name: ISO/IEC 27001:2022
+  status: recertified June 2025
+  auditor: A-LIGN (accredited by ANAB and UKAS)
+in_scope_services:
+- Item Management
+- Product Introduction
+- Digital Asset
+- User Management
+- Communications Hub
+- Data Sync Direct PIM
+- Item Integration Gateway
+- Product Bundles Services
+evidence:
+- source: https://1worldsync.com/security/
+  keywords: [soc 2 type 2, iso 27001, iso/iec 27001:2022, trust services criteria]

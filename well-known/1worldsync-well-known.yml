@@ -1,0 +1,29 @@
+generated: '2026-07-17'
+method: searched
+source: probe of /.well-known/ paths on 1WorldSync hosts (2026-07-17)
+hosts:
+- host: https://content1-api.1worldsync.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 500
+  - path: /.well-known/openid-configuration
+    status: 500
+  - path: /.well-known/oauth-authorization-server
+    status: 500
+  - path: /.well-known/api-catalog
+    status: 500
+- host: https://1worldsync.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://developer.1worldsync.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+result: none
+note: >-
+  No /.well-known/ discovery documents are published. The API host returns 500 for
+  unknown paths (no handler) and the marketing/developer hosts return 404. Absence
+  is valid, expected data — no files were saved.

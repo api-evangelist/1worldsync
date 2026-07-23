@@ -1,0 +1,20 @@
+generated: '2026-07-17'
+method: searched
+source: https://developer.1worldsync.com/read-api-2-0-documentation/
+environments:
+- name: Pre-Production
+  base_url: https://content1-api.preprod.1worldsync.com
+  swagger: https://content1-api.preprod.1worldsync.com/swagger/index.html
+  note: >-
+    Non-production testing environment. Requires a separate client id (app_id) and
+    secret key from the production account.
+- name: Production
+  base_url: https://content1-api.1worldsync.com
+  swagger: https://content1-api.1worldsync.com/swagger/index.html
+test_credentials:
+  note: >-
+    1WorldSync does not publish shared/magic test credentials. Each account is
+    issued its own app_id and 32-character secret key at registration; the
+    Pre-Production environment uses distinct credentials from Production.
+  register: https://developer.1worldsync.com/register
+test_values: []
