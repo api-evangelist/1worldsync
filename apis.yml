@@ -62,6 +62,8 @@ apis:
   - type: DataModel
     url: data-model/1worldsync-data-model.yml
 common:
+- type: Overlay
+  url: overlays/1worldsync-content1-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/1worldsync-agentic-access.yml
 - type: DomainSecurity
