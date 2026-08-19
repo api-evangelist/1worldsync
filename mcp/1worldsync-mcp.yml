@@ -2,11 +2,9 @@ generated: '2026-07-17'
 method: derived
 status: candidate
 source: openapi/1worldsync-content1-openapi-original.json
-note: >-
-  No official hosted/remote 1WorldSync MCP server was found (docs, npm
-  @modelcontextprotocol, MCP registries). The tools below are a candidate surface
-  derived one-per-operation from the Content1 Read API OpenAPI; not a published
-  server.
+note: No official hosted/remote 1WorldSync MCP server was found (docs, npm @modelcontextprotocol, MCP
+  registries). The tools below are a candidate surface derived one-per-operation from the Content1 Read
+  API OpenAPI; not a published server.
 server:
   name: 1worldsync-content1
   transport: http
@@ -20,3 +18,9 @@ tools:
 - name: fetch_hierarchies_by_criteria
   description: Fetch item hierarchy details for a given search criteria.
   source_operation: openapi/1worldsync-content1-openapi-original.json#fetchHierarchiesByCriteria
+deployment:
+  mode: none
+  verified: derived
+  tools: 3
+  checked: '2026-08-12'
+  source: catalog MCP census

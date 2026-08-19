@@ -1,0 +1,141 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "1WorldSync Content1 FetchProduct API",
+    "version": "V1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "FetchProduct",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "This method will return product count for a given search criteria.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://content1-api.1worldsync.com/V1/product/count",
+            "headers": [
+              {
+                "name": "appid",
+                "value": ""
+              },
+              {
+                "name": "hashcode",
+                "value": "hashcode"
+              },
+              {
+                "name": "gln",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "timestamp",
+                "value": "2023-02-28T13:37:59Z",
+                "type": "query",
+                "description": "Current Timestamp in YYYY-MM-DDTHH:mm:ssZ format"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This method will return product count for a given search criteria."
+        },
+        {
+          "info": {
+            "name": "This method will return list of products for a given search criteria.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://content1-api.1worldsync.com/V1/product/fetch",
+            "headers": [
+              {
+                "name": "appid",
+                "value": ""
+              },
+              {
+                "name": "hashcode",
+                "value": "hashcode"
+              },
+              {
+                "name": "gln",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "timestamp",
+                "value": "2023-02-28T13:37:59Z",
+                "type": "query",
+                "description": "Current Timestamp in YYYY-MM-DDTHH:mm:ssZ format"
+              },
+              {
+                "name": "pageSize",
+                "value": "1000",
+                "type": "query",
+                "description": "Page size, default to 1000"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This method will search for products on a given search criteria and will return data in paged way. Page size can be mentioned in the request parameter. Using of \"searchAfter\" in request body will give you next page data."
+        },
+        {
+          "info": {
+            "name": "Fetch item hierarchy details.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://content1-api.1worldsync.com/V1/product/hierarchy",
+            "headers": [
+              {
+                "name": "appid",
+                "value": ""
+              },
+              {
+                "name": "hashcode",
+                "value": "hashcode"
+              },
+              {
+                "name": "gln",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "timestamp",
+                "value": "2023-02-28T13:37:59Z",
+                "type": "query",
+                "description": "Current Timestamp in YYYY-MM-DDTHH:mm:ssZ format"
+              },
+              {
+                "name": "pageSize",
+                "value": "1000",
+                "type": "query",
+                "description": "Page size, default to 1000"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This method will return item hierarchy details based on a given search criteria and will return data with pagination. Page size can be mentioned in the \"size\" parameter. Using of \"searchAfter\" in request body loads next page."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

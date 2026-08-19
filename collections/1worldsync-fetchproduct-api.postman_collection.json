@@ -1,0 +1,973 @@
+{
+  "item": [
+    {
+      "id": "b3a42441-e361-4d64-bde7-a7c39fdbf3ba",
+      "name": "FetchProduct",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fa4d1785-fcdf-4e6c-9895-d92c8f59518e",
+          "name": "This method will return product count for a given search criteria.",
+          "request": {
+            "name": "This method will return product count for a given search criteria.",
+            "description": {
+              "content": "This method will return product count for a given search criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "V1",
+                "product",
+                "count"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "timestamp",
+                  "value": "<string>",
+                  "description": "(Required) Current Timestamp in YYYY-MM-DDTHH:mm:ssZ format"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API User App Id",
+                "key": "appid",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Hash of secret key, URL and timestamp",
+                "key": "hashcode",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Data requested for the GLNs (comma separated for multiple, no space required or Click the \"Add Item\" button)",
+                "key": "gln",
+                "value": "<Array>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"gtins\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"pullHierarchy\": \"<boolean>\",\n  \"gtin\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ipGln\": \"<d{14}>\",\n  \"targetMarket\": \"<string>\",\n  \"lastModifiedDate\": {\n    \"from\": {\n      \"date\": \"<string>\",\n      \"op\": \"<string>\"\n    },\n    \"to\": {\n      \"date\": \"<string>\",\n      \"op\": \"<string>\"\n    }\n  },\n  \"brandName\": \"<string>\",\n  \"productType\": \"<string>\",\n  \"isConsumerUnit\": \"<string>\",\n  \"gpcCode\": \"<string>\",\n  \"upcCode\": \"<string>\",\n  \"sortFields\": [\n    {\n      \"field\": \"<string>\",\n      \"desc\": \"<boolean>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"desc\": \"<boolean>\"\n    }\n  ],\n  \"fields\": {\n    \"include\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"exclude\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"searchAfter\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "662c1b7d-bffe-470a-af41-0d821b10e31d",
+              "name": "will return count of products on a given criteria",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V1",
+                    "product",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timestamp",
+                      "value": "2023-02-28T13:37:59Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API User App Id",
+                    "key": "appid",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Hash of secret key, URL and timestamp",
+                    "key": "hashcode",
+                    "value": "hashcode"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Data requested for the GLNs (comma separated for multiple, no space required or Click the \"Add Item\" button)",
+                    "key": "gln",
+                    "value": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"gtins\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"pullHierarchy\": false,\n  \"ipGln\": \"<d{14}>\",\n  \"targetMarket\": \"US\",\n  \"lastModifiedDate\": {\n    \"from\": {\n      \"date\": \"2023-01-01\",\n      \"op\": \"GTE\"\n    },\n    \"to\": {\n      \"date\": \"2023-01-31\",\n      \"op\": \"LTE\"\n    }\n  },\n  \"brandName\": \"Brand Name\",\n  \"productType\": \"EA\",\n  \"isConsumerUnit\": \"false\",\n  \"gpcCode\": \"10000248\",\n  \"upcCode\": \"123456789128\",\n  \"sortFields\": [\n    {\n      \"field\": \"<string>\",\n      \"desc\": \"<boolean>\"\n    }\n  ],\n  \"fields\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 1000\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc021096-536f-4ab0-b655-43e125060f93",
+              "name": "For any Authorization, Authentication and validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V1",
+                    "product",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timestamp",
+                      "value": "2023-02-28T13:37:59Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API User App Id",
+                    "key": "appid",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Hash of secret key, URL and timestamp",
+                    "key": "hashcode",
+                    "value": "hashcode"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Data requested for the GLNs (comma separated for multiple, no space required or Click the \"Add Item\" button)",
+                    "key": "gln",
+                    "value": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"gtins\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"pullHierarchy\": false,\n  \"ipGln\": \"<d{14}>\",\n  \"targetMarket\": \"US\",\n  \"lastModifiedDate\": {\n    \"from\": {\n      \"date\": \"2023-01-01\",\n      \"op\": \"GTE\"\n    },\n    \"to\": {\n      \"date\": \"2023-01-31\",\n      \"op\": \"LTE\"\n    }\n  },\n  \"brandName\": \"Brand Name\",\n  \"productType\": \"EA\",\n  \"isConsumerUnit\": \"false\",\n  \"gpcCode\": \"10000248\",\n  \"upcCode\": \"123456789128\",\n  \"sortFields\": [\n    {\n      \"field\": \"<string>\",\n      \"desc\": \"<boolean>\"\n    }\n  ],\n  \"fields\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"12222\",\n  \"code\": \"[INTERNAL_SERVER_ERROR | REQUIRED_HEADER_APPID_MISSING]\",\n  \"reason\": \"appId is missing\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "67f0d00f-f3a2-433e-bdd9-6d7bf1a4f70e",
+              "name": "when error occurred in processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V1",
+                    "product",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timestamp",
+                      "value": "2023-02-28T13:37:59Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API User App Id",
+                    "key": "appid",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Hash of secret key, URL and timestamp",
+                    "key": "hashcode",
+                    "value": "hashcode"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Data requested for the GLNs (comma separated for multiple, no space required or Click the \"Add Item\" button)",
+                    "key": "gln",
+                    "value": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"gtins\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"pullHierarchy\": false,\n  \"ipGln\": \"<d{14}>\",\n  \"targetMarket\": \"US\",\n  \"lastModifiedDate\": {\n    \"from\": {\n      \"date\": \"2023-01-01\",\n      \"op\": \"GTE\"\n    },\n    \"to\": {\n      \"date\": \"2023-01-31\",\n      \"op\": \"LTE\"\n    }\n  },\n  \"brandName\": \"Brand Name\",\n  \"productType\": \"EA\",\n  \"isConsumerUnit\": \"false\",\n  \"gpcCode\": \"10000248\",\n  \"upcCode\": \"123456789128\",\n  \"sortFields\": [\n    {\n      \"field\": \"<string>\",\n      \"desc\": \"<boolean>\"\n    }\n  ],\n  \"fields\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"12222\",\n  \"code\": \"[INTERNAL_SERVER_ERROR | REQUIRED_HEADER_APPID_MISSING]\",\n  \"reason\": \"appId is missing\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e25751c5-8f25-4db8-a182-c8d56f0962ef",
+          "name": "This method will return list of products for a given search criteria.",
+          "request": {
+            "name": "This method will return list of products for a given search criteria.",
+            "description": {
+              "content": "This method will search for products on a given search criteria and will return data in paged way. Page size can be mentioned in the request parameter. Using of \"searchAfter\" in request body will give you next page data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "V1",
+                "product",
+                "fetch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "timestamp",
+                  "value": "<string>",
+                  "description": "(Required) Current Timestamp in YYYY-MM-DDTHH:mm:ssZ format"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "(Required) Page size, default to 1000"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API User App Id",
+                "key": "appid",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Hash of secret key, URL and timestamp",
+                "key": "hashcode",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Data requested for the GLNs (comma separated for multiple, no space required or Click the \"Add Item\" button)",
+                "key": "gln",
+                "value": "<Array>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"gtins\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"pullHierarchy\": \"<boolean>\",\n  \"gtin\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ipGln\": \"<d{14}>\",\n  \"targetMarket\": \"<string>\",\n  \"lastModifiedDate\": {\n    \"from\": {\n      \"date\": \"<string>\",\n      \"op\": \"<string>\"\n    },\n    \"to\": {\n      \"date\": \"<string>\",\n      \"op\": \"<string>\"\n    }\n  },\n  \"brandName\": \"<string>\",\n  \"productType\": \"<string>\",\n  \"isConsumerUnit\": \"<string>\",\n  \"gpcCode\": \"<string>\",\n  \"upcCode\": \"<string>\",\n  \"sortFields\": [\n    {\n      \"field\": \"<string>\",\n      \"desc\": \"<boolean>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"desc\": \"<boolean>\"\n    }\n  ],\n  \"fields\": {\n    \"include\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"exclude\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"searchAfter\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "40eb72c1-a19d-4601-9eac-ede3240685c7",
+              "name": "Will return list of products. ",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V1",
+                    "product",
+                    "fetch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timestamp",
+                      "value": "2023-02-28T13:37:59Z"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API User App Id",
+                    "key": "appid",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Hash of secret key, URL and timestamp",
+                    "key": "hashcode",
+                    "value": "hashcode"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Data requested for the GLNs (comma separated for multiple, no space required or Click the \"Add Item\" button)",
+                    "key": "gln",
+                    "value": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"gtins\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"pullHierarchy\": false,\n  \"ipGln\": \"<d{14}>\",\n  \"targetMarket\": \"US\",\n  \"lastModifiedDate\": {\n    \"from\": {\n      \"date\": \"2023-01-01\",\n      \"op\": \"GTE\"\n    },\n    \"to\": {\n      \"date\": \"2023-01-31\",\n      \"op\": \"LTE\"\n    }\n  },\n  \"brandName\": \"Brand Name\",\n  \"productType\": \"EA\",\n  \"isConsumerUnit\": \"false\",\n  \"gpcCode\": \"10000248\",\n  \"upcCode\": \"123456789128\",\n  \"sortFields\": [\n    {\n      \"field\": \"<string>\",\n      \"desc\": \"<boolean>\"\n    }\n  ],\n  \"fields\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"objId\": \"2334322\",\n      \"gln\": \"string\",\n      \"dataPoolType\": \"SDP\",\n      \"item\": {}\n    },\n    {\n      \"objId\": \"2334322\",\n      \"gln\": \"string\",\n      \"dataPoolType\": \"SDP\",\n      \"item\": {}\n    }\n  ],\n  \"totalPages\": 9873,\n  \"currentPage\": 7875,\n  \"message\": \"Warning message\",\n  \"totalCount\": 3344\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce708094-e388-4ce6-921b-2281c703ecf1",
+              "name": "When no products found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V1",
+                    "product",
+                    "fetch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timestamp",
+                      "value": "2023-02-28T13:37:59Z"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API User App Id",
+                    "key": "appid",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Hash of secret key, URL and timestamp",
+                    "key": "hashcode",
+                    "value": "hashcode"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Data requested for the GLNs (comma separated for multiple, no space required or Click the \"Add Item\" button)",
+                    "key": "gln",
+                    "value": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"gtins\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"pullHierarchy\": false,\n  \"ipGln\": \"<d{14}>\",\n  \"targetMarket\": \"US\",\n  \"lastModifiedDate\": {\n    \"from\": {\n      \"date\": \"2023-01-01\",\n      \"op\": \"GTE\"\n    },\n    \"to\": {\n      \"date\": \"2023-01-31\",\n      \"op\": \"LTE\"\n    }\n  },\n  \"brandName\": \"Brand Name\",\n  \"productType\": \"EA\",\n  \"isConsumerUnit\": \"false\",\n  \"gpcCode\": \"10000248\",\n  \"upcCode\": \"123456789128\",\n  \"sortFields\": [\n    {\n      \"field\": \"<string>\",\n      \"desc\": \"<boolean>\"\n    }\n  ],\n  \"fields\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7eb2917d-eb22-42f6-871e-800c38b44229",
+              "name": "For any Authorization, Authentication and validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V1",
+                    "product",
+                    "fetch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timestamp",
+                      "value": "2023-02-28T13:37:59Z"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API User App Id",
+                    "key": "appid",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Hash of secret key, URL and timestamp",
+                    "key": "hashcode",
+                    "value": "hashcode"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Data requested for the GLNs (comma separated for multiple, no space required or Click the \"Add Item\" button)",
+                    "key": "gln",
+                    "value": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"gtins\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"pullHierarchy\": false,\n  \"ipGln\": \"<d{14}>\",\n  \"targetMarket\": \"US\",\n  \"lastModifiedDate\": {\n    \"from\": {\n      \"date\": \"2023-01-01\",\n      \"op\": \"GTE\"\n    },\n    \"to\": {\n      \"date\": \"2023-01-31\",\n      \"op\": \"LTE\"\n    }\n  },\n  \"brandName\": \"Brand Name\",\n  \"productType\": \"EA\",\n  \"isConsumerUnit\": \"false\",\n  \"gpcCode\": \"10000248\",\n  \"upcCode\": \"123456789128\",\n  \"sortFields\": [\n    {\n      \"field\": \"<string>\",\n      \"desc\": \"<boolean>\"\n    }\n  ],\n  \"fields\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"12222\",\n  \"code\": \"[INTERNAL_SERVER_ERROR | REQUIRED_HEADER_APPID_MISSING]\",\n  \"reason\": \"appId is missing\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "293512a0-5854-4690-ba35-297faf62a230",
+              "name": "<p><ul><li>when page size is more then 1000</li><li>when error occurred in processing</li></ul></p>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V1",
+                    "product",
+                    "fetch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timestamp",
+                      "value": "2023-02-28T13:37:59Z"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API User App Id",
+                    "key": "appid",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Hash of secret key, URL and timestamp",
+                    "key": "hashcode",
+                    "value": "hashcode"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Data requested for the GLNs (comma separated for multiple, no space required or Click the \"Add Item\" button)",
+                    "key": "gln",
+                    "value": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"gtins\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"pullHierarchy\": false,\n  \"ipGln\": \"<d{14}>\",\n  \"targetMarket\": \"US\",\n  \"lastModifiedDate\": {\n    \"from\": {\n      \"date\": \"2023-01-01\",\n      \"op\": \"GTE\"\n    },\n    \"to\": {\n      \"date\": \"2023-01-31\",\n      \"op\": \"LTE\"\n    }\n  },\n  \"brandName\": \"Brand Name\",\n  \"productType\": \"EA\",\n  \"isConsumerUnit\": \"false\",\n  \"gpcCode\": \"10000248\",\n  \"upcCode\": \"123456789128\",\n  \"sortFields\": [\n    {\n      \"field\": \"<string>\",\n      \"desc\": \"<boolean>\"\n    }\n  ],\n  \"fields\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"12222\",\n  \"code\": \"[INTERNAL_SERVER_ERROR | REQUIRED_HEADER_APPID_MISSING]\",\n  \"reason\": \"appId is missing\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9eefac98-9dce-4b15-b25c-ac4a51f41879",
+          "name": "Fetch item hierarchy details.",
+          "request": {
+            "name": "Fetch item hierarchy details.",
+            "description": {
+              "content": "This method will return item hierarchy details based on a given search criteria and will return data with pagination. Page size can be mentioned in the \"size\" parameter. Using of \"searchAfter\" in request body loads next page.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "V1",
+                "product",
+                "hierarchy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "timestamp",
+                  "value": "<string>",
+                  "description": "(Required) Current Timestamp in YYYY-MM-DDTHH:mm:ssZ format"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "(Required) Page size, default to 1000"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API User App Id",
+                "key": "appid",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Hash of secret key, URL and timestamp",
+                "key": "hashcode",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Data requested for the GLNs (comma separated for multiple, no space required or Click the \"Add Item\" button)",
+                "key": "gln",
+                "value": "<Array>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"gtin\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ipGln\": \"<d{14}>\",\n  \"lastModifiedDate\": {\n    \"from\": {\n      \"date\": \"<string>\",\n      \"op\": \"<string>\"\n    },\n    \"to\": {\n      \"date\": \"<string>\",\n      \"op\": \"<string>\"\n    }\n  },\n  \"sortFields\": [\n    {\n      \"field\": \"<string>\",\n      \"desc\": \"<boolean>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"desc\": \"<boolean>\"\n    }\n  ],\n  \"searchAfter\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f980d8ce-69a8-4938-b916-41321143aa75",
+              "name": "Returns item hierarchy details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V1",
+                    "product",
+                    "hierarchy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timestamp",
+                      "value": "2023-02-28T13:37:59Z"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API User App Id",
+                    "key": "appid",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Hash of secret key, URL and timestamp",
+                    "key": "hashcode",
+                    "value": "hashcode"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Data requested for the GLNs (comma separated for multiple, no space required or Click the \"Add Item\" button)",
+                    "key": "gln",
+                    "value": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ipGln\": \"<d{14}>\",\n  \"lastModifiedDate\": {\n    \"from\": {\n      \"date\": \"2023-01-01\",\n      \"op\": \"GTE\"\n    },\n    \"to\": {\n      \"date\": \"2023-01-31\",\n      \"op\": \"LTE\"\n    }\n  },\n  \"sortFields\": [\n    {\n      \"field\": \"<string>\",\n      \"desc\": \"<boolean>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hierarchies\": [\n    {\n      \"gtin\": \"string\",\n      \"informationProviderGLN\": \"string\",\n      \"targetMarket\": \"string\",\n      \"hierarchy\": [\n        {\n          \"parentGtin\": \"string\",\n          \"gtin\": \"string\",\n          \"quantity\": \"string\",\n          \"children\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/ItemFetchHierarchy detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/ItemFetchHierarchy detected>\"\n            }\n          ]\n        },\n        {\n          \"parentGtin\": \"string\",\n          \"gtin\": \"string\",\n          \"quantity\": \"string\",\n          \"children\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/ItemFetchHierarchy detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/ItemFetchHierarchy detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"gtin\": \"string\",\n      \"informationProviderGLN\": \"string\",\n      \"targetMarket\": \"string\",\n      \"hierarchy\": [\n        {\n          \"parentGtin\": \"string\",\n          \"gtin\": \"string\",\n          \"quantity\": \"string\",\n          \"children\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/ItemFetchHierarchy detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/ItemFetchHierarchy detected>\"\n            }\n          ]\n        },\n        {\n          \"parentGtin\": \"string\",\n          \"gtin\": \"string\",\n          \"quantity\": \"string\",\n          \"children\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/ItemFetchHierarchy detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/ItemFetchHierarchy detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"message\": \"To retrieve the next page of products, pick what you have received in searchAfter and set it in next request.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e6a89dd5-6548-496a-af45-ffa6f7aba604",
+              "name": "For any Authorization, Authentication and validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V1",
+                    "product",
+                    "hierarchy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timestamp",
+                      "value": "2023-02-28T13:37:59Z"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API User App Id",
+                    "key": "appid",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Hash of secret key, URL and timestamp",
+                    "key": "hashcode",
+                    "value": "hashcode"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Data requested for the GLNs (comma separated for multiple, no space required or Click the \"Add Item\" button)",
+                    "key": "gln",
+                    "value": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ipGln\": \"<d{14}>\",\n  \"lastModifiedDate\": {\n    \"from\": {\n      \"date\": \"2023-01-01\",\n      \"op\": \"GTE\"\n    },\n    \"to\": {\n      \"date\": \"2023-01-31\",\n      \"op\": \"LTE\"\n    }\n  },\n  \"sortFields\": [\n    {\n      \"field\": \"<string>\",\n      \"desc\": \"<boolean>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"12222\",\n  \"code\": \"[INTERNAL_SERVER_ERROR | REQUIRED_HEADER_APPID_MISSING]\",\n  \"reason\": \"appId is missing\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "383febfc-cb90-46de-ae12-a0fb6096cf9f",
+              "name": "<p><ul><li>Requested page size is grater than 1000</li><li>Internal error occured</li></ul></p>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V1",
+                    "product",
+                    "hierarchy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timestamp",
+                      "value": "2023-02-28T13:37:59Z"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API User App Id",
+                    "key": "appid",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Hash of secret key, URL and timestamp",
+                    "key": "hashcode",
+                    "value": "hashcode"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Data requested for the GLNs (comma separated for multiple, no space required or Click the \"Add Item\" button)",
+                    "key": "gln",
+                    "value": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ipGln\": \"<d{14}>\",\n  \"lastModifiedDate\": {\n    \"from\": {\n      \"date\": \"2023-01-01\",\n      \"op\": \"GTE\"\n    },\n    \"to\": {\n      \"date\": \"2023-01-31\",\n      \"op\": \"LTE\"\n    }\n  },\n  \"sortFields\": [\n    {\n      \"field\": \"<string>\",\n      \"desc\": \"<boolean>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"12222\",\n  \"code\": \"[INTERNAL_SERVER_ERROR | REQUIRED_HEADER_APPID_MISSING]\",\n  \"reason\": \"appId is missing\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://content1-api.1worldsync.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "13889e34-f098-4fa8-a6cc-61a78bc69c71",
+    "name": "1WorldSync Content1 FetchProduct API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<div class=\"info_title\">1WorldSync Content1 API</div>\n<div class=\"info_description markdown\">\n<p>Content1 will provide access to accurate, trusted product data sourced directly from the Brand Owners through 1WorldSync’s APIs. This full set of product information is readily available to you through a set of web services, allowing you to get up-to-date, complete product information.</P>\n\nThe following APIs are available\n <ul>\n    <li><b>Product Count API</b> - Performs a search against the product data published in ContentNOW to find product count that meet the supplied criteria. You can user only four fields i.e. GLN, GTIN, Target Market and Last Modified Date to search data.</li>\n    <li><b>Product Fetch API</b> - Once a Product Search has been performed (and you have received a count), the full set of atrribute information on a given product can be retrieved using the Product Fetch API. This is a paginated API which means you need to mention the offset count and the page size. It is preferred that you make sequential calls. </li>         \n </ul>\n<p>This tool features a fully functional form which will call the Content1 API in real time. To unlock the API call, you must have your client secret key provided through <a href=https://developer.1worldsync.com>developer.1worldsync.com</a>. Enter that key in the top right of this page to unlock the API calls used below.</P>\n\nContact Support:\n Email: 1ws-im-apps-build@syndigo.com",
+      "type": "text/plain"
+    }
+  }
+}
