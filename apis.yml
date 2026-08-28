@@ -11,6 +11,18 @@ description: >-
   and a User Management API (UMA) — all authenticated with HMAC-signed requests
   using an app_id and a secret key. 1WorldSync serves CPG, grocery, healthcare,
   foodservice, and DIY sectors and is SOC 2 Type 2 and ISO/IEC 27001:2022 certified.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: unknown
