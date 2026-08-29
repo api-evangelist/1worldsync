@@ -74,6 +74,9 @@ apis:
   - type: DataModel
     url: data-model/1worldsync-data-model.yml
 common:
+- type: CapabilityMap
+  url: capabilities/1worldsync-capability-edges.yml
+  name: 1WorldSync Business Capability Map
 - type: Overlay
   url: overlays/1worldsync-content1-overlay.yaml
 - type: AgenticAccess
