@@ -235,71 +235,6 @@ paths:
                 $ref: '#/components/schemas/ItemFetchError'
 components:
   schemas:
-    FetchFields:
-      type:
-      - object
-      - 'null'
-      properties:
-        include:
-          uniqueItems: true
-          type: array
-          description: 'To retrieve subset of attributes from item. Ex: ["gtin","informationProviderGLN","targetMarket","lastModifiedDate","brandName","gpcCategory","externalFileLink"]'
-          example: []
-          items:
-            type: string
-            description: 'To retrieve subset of attributes from item. Ex: ["gtin","informationProviderGLN","targetMarket","lastModifiedDate","brandName","gpcCategory","externalFileLink"]'
-            example: '[]'
-        exclude:
-          uniqueItems: true
-          type: array
-          description: 'To abandon some of attributes from item. Ex: ["*.gln","externalFileLink.authorizedRecipients"]'
-          example: []
-          items:
-            type: string
-            description: 'To abandon some of attributes from item. Ex: ["*.gln","externalFileLink.authorizedRecipients"]'
-            example: '[]'
-      description: Fields to be include or exclude in result; By default all fields will be included
-    ItemFetchHierarchy:
-      type: object
-      properties:
-        parentGtin:
-          type: string
-        gtin:
-          type: string
-        quantity:
-          type: string
-        children:
-          type: array
-          items:
-            $ref: '#/components/schemas/ItemFetchHierarchy'
-      description: Hierarchy mapping
-    ItemCount:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: This is total product count for given criteria.
-          format: int64
-          example: 1000
-      description: Product count result
-    DateField:
-      type: object
-      properties:
-        date:
-          type: string
-          description: Date
-          example: '2022-01-15T00:00:00'
-        op:
-          type: string
-          description: Date comparison operation type (ENUM)
-          example: GT
-          enum:
-          - GT
-          - GTE
-          - LT
-          - LTE
-          - EQ
-      description: LastModifiedDate To
     ItemFetchRequest:
       type: object
       properties:
@@ -404,25 +339,38 @@ components:
             description: This field is used to fetch item in batch. To retrieve the next page of the items. You need to set searchAfter in search criteria from previous result.
             example: []
       description: Product search criteria object
-    HierarchyDetails:
+    Item:
       type: object
       properties:
-        gtin:
+        objId:
           type: string
-          description: Item GTIN.
-          example: 03007687545289
-        informationProviderGLN:
+          description: Elasticsearch objId
+          example: '2334322'
+        gln:
           type: string
-          description: Information provider GLN.
-        targetMarket:
+          description: Item shared with gln
+          example: 0838016005012
+        dataPoolType:
           type: string
-          description: Target market.
-        hierarchy:
-          type: array
-          description: Item hierarchy list.
-          items:
-            $ref: '#/components/schemas/ItemFetchHierarchy'
-      description: Item hierarchy details
+          description: Item belongs to which data pool
+          example: SDP
+        item:
+          type: object
+          additionalProperties:
+            type: object
+            description: Item as map
+            example: {}
+          description: Item as map
+          example: {}
+    ItemCount:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: This is total product count for given criteria.
+          format: int64
+          example: 1000
+      description: Product count result
     LastModifiedDate:
       type:
       - object
@@ -472,22 +420,6 @@ components:
             description: This field is used to fetch item in batch. To retrieve the next page of the items. You need to set it in search criteria.
             example: '[00637827872406,"US"]'
       description: Product search result
-    SortField:
-      type:
-      - object
-      - 'null'
-      properties:
-        field:
-          type: string
-          description: 'Fields that will be sorted upon. Ex: gtin, informationProviderGLN and targetMarket etc.'
-        desc:
-          type: boolean
-      description: Fields that will be sorted upon
-      example:
-      - field: lastModifiedDate
-        desc: 'true'
-      - field: gtin
-        desc: 'false'
     FetchHierarchyRequest:
       type: object
       properties:
@@ -540,45 +472,24 @@ components:
             description: This field is used to fetch item in batch. To retrieve the next page of the items. You need to set searchAfter in search criteria from previous result.
             example: []
       description: Hierarchy search criteria
-    Item:
+    DateField:
       type: object
       properties:
-        objId:
+        date:
           type: string
-          description: Elasticsearch objId
-          example: '2334322'
-        gln:
+          description: Date
+          example: '2022-01-15T00:00:00'
+        op:
           type: string
-          description: Item shared with gln
-          example: 0838016005012
-        dataPoolType:
-          type: string
-          description: Item belongs to which data pool
-          example: SDP
-        item:
-          type: object
-          additionalProperties:
-            type: object
-            description: Item as map
-            example: {}
-          description: Item as map
-          example: {}
-    ItemFetchError:
-      properties:
-        requestId:
-          type: string
-          description: An unique id generated at server end to track processing of this request
-          example: '12222'
-        code:
-          type: string
-          description: Error code
-          example: '[INTERNAL_SERVER_ERROR | REQUIRED_HEADER_APPID_MISSING]'
-        reason:
-          type: string
-          description: Error reason in human readable form
-          example: appId is missing
-      description: Error response object. you will receive this object when there is an error in server side in processing
-      example: '{"requestId":1334426,"code":"REQUIRED_HEADER_APPID_MISSING", "reason":"appId is missing in header" }'
+          description: Date comparison operation type (ENUM)
+          example: GT
+          enum:
+          - GT
+          - GTE
+          - LT
+          - LTE
+          - EQ
+      description: LastModifiedDate To
     HierarchyFetchResult:
       type: object
       properties:
@@ -600,3 +511,92 @@ components:
             description: This value is used to fetch next page of hierarchies.
             example: '[00637827872406,"US"]'
       description: Hierarchy search result
+    HierarchyDetails:
+      type: object
+      properties:
+        gtin:
+          type: string
+          description: Item GTIN.
+          example: 03007687545289
+        informationProviderGLN:
+          type: string
+          description: Information provider GLN.
+        targetMarket:
+          type: string
+          description: Target market.
+        hierarchy:
+          type: array
+          description: Item hierarchy list.
+          items:
+            $ref: '#/components/schemas/ItemFetchHierarchy'
+      description: Item hierarchy details
+    ItemFetchError:
+      properties:
+        requestId:
+          type: string
+          description: An unique id generated at server end to track processing of this request
+          example: '12222'
+        code:
+          type: string
+          description: Error code
+          example: '[INTERNAL_SERVER_ERROR | REQUIRED_HEADER_APPID_MISSING]'
+        reason:
+          type: string
+          description: Error reason in human readable form
+          example: appId is missing
+      description: Error response object. you will receive this object when there is an error in server side in processing
+      example: '{"requestId":1334426,"code":"REQUIRED_HEADER_APPID_MISSING", "reason":"appId is missing in header" }'
+    ItemFetchHierarchy:
+      type: object
+      properties:
+        parentGtin:
+          type: string
+        gtin:
+          type: string
+        quantity:
+          type: string
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/ItemFetchHierarchy'
+      description: Hierarchy mapping
+    SortField:
+      type:
+      - object
+      - 'null'
+      properties:
+        field:
+          type: string
+          description: 'Fields that will be sorted upon. Ex: gtin, informationProviderGLN and targetMarket etc.'
+        desc:
+          type: boolean
+      description: Fields that will be sorted upon
+      example:
+      - field: lastModifiedDate
+        desc: 'true'
+      - field: gtin
+        desc: 'false'
+    FetchFields:
+      type:
+      - object
+      - 'null'
+      properties:
+        include:
+          uniqueItems: true
+          type: array
+          description: 'To retrieve subset of attributes from item. Ex: ["gtin","informationProviderGLN","targetMarket","lastModifiedDate","brandName","gpcCategory","externalFileLink"]'
+          example: []
+          items:
+            type: string
+            description: 'To retrieve subset of attributes from item. Ex: ["gtin","informationProviderGLN","targetMarket","lastModifiedDate","brandName","gpcCategory","externalFileLink"]'
+            example: '[]'
+        exclude:
+          uniqueItems: true
+          type: array
+          description: 'To abandon some of attributes from item. Ex: ["*.gln","externalFileLink.authorizedRecipients"]'
+          example: []
+          items:
+            type: string
+            description: 'To abandon some of attributes from item. Ex: ["*.gln","externalFileLink.authorizedRecipients"]'
+            example: '[]'
+      description: Fields to be include or exclude in result; By default all fields will be included
