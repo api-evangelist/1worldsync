@@ -235,67 +235,119 @@ paths:
                 $ref: '#/components/schemas/ItemFetchError'
 components:
   schemas:
-    ItemFetchError:
-      properties:
-        requestId:
-          type: string
-          description: An unique id generated at server end to track processing of this request
-          example: '12222'
-        code:
-          type: string
-          description: Error code
-          example: '[INTERNAL_SERVER_ERROR | REQUIRED_HEADER_APPID_MISSING]'
-        reason:
-          type: string
-          description: Error reason in human readable form
-          example: appId is missing
-      description: Error response object. you will receive this object when there is an error in server side in processing
-      example: '{"requestId":1334426,"code":"REQUIRED_HEADER_APPID_MISSING", "reason":"appId is missing in header" }'
-    HierarchyFetchResult:
+    ItemCount:
       type: object
       properties:
-        hierarchies:
-          type: array
-          description: Hierarchies of the item.
-          items:
-            $ref: '#/components/schemas/HierarchyDetails'
-        message:
-          type: string
-          description: Response message.
-          example: To retrieve the next page of products, pick what you have received in searchAfter and set it in next request.
-        searchAfter:
-          type: array
-          description: This value is used to fetch next page of hierarchies.
-          example: '[00637827872406,"US"]'
-          items:
-            type: object
-            description: This value is used to fetch next page of hierarchies.
-            example: '[00637827872406,"US"]'
-      description: Hierarchy search result
-    FetchFields:
+        count:
+          type: integer
+          description: This is total product count for given criteria.
+          format: int64
+          example: 1000
+      description: Product count result
+    LastModifiedDate:
       type:
       - object
       - 'null'
       properties:
-        include:
-          uniqueItems: true
-          type: array
-          description: 'To retrieve subset of attributes from item. Ex: ["gtin","informationProviderGLN","targetMarket","lastModifiedDate","brandName","gpcCategory","externalFileLink"]'
+        from:
+          $ref: '#/components/schemas/DateField'
+        to:
+          $ref: '#/components/schemas/DateField'
+      description: Item last modified date
+      example:
+        from:
+          date: '2023-01-01'
+          op: GTE
+        to:
+          date: '2023-01-31'
+          op: LTE
+    FetchHierarchyRequest:
+      type: object
+      properties:
+        gtin:
+          type:
+          - array
+          - 'null'
+          description: Item GTIN array
           example: []
           items:
-            type: string
-            description: 'To retrieve subset of attributes from item. Ex: ["gtin","informationProviderGLN","targetMarket","lastModifiedDate","brandName","gpcCategory","externalFileLink"]'
+            type:
+            - string
+            - 'null'
+            description: Item GTIN array
             example: '[]'
-        exclude:
+        ipGln:
+          maxLength: 14
+          minLength: 14
+          type:
+          - string
+          - 'null'
+          description: Information Provider GLN
+          format: d{14}
+          example: 0838016005012
+        lastModifiedDate:
+          $ref: '#/components/schemas/LastModifiedDate'
+        sortFields:
           uniqueItems: true
-          type: array
-          description: 'To abandon some of attributes from item. Ex: ["*.gln","externalFileLink.authorizedRecipients"]'
+          type:
+          - array
+          - 'null'
+          description: Fields that will be sorted upon
+          example:
+          - field: lastModifiedDate
+            desc: 'true'
+          - field: gtin
+            desc: 'false'
+          items:
+            $ref: '#/components/schemas/SortField'
+        searchAfter:
+          type:
+          - array
+          - 'null'
+          description: This field is used to fetch item in batch. To retrieve the next page of the items. You need to set searchAfter in search criteria from previous result.
           example: []
           items:
-            type: string
-            description: 'To abandon some of attributes from item. Ex: ["*.gln","externalFileLink.authorizedRecipients"]'
-            example: '[]'
-      description: Fields to be include or exclude in result; By default all fields will be included
+            type:
+            - object
+            - 'null'
+            description: This field is used to fetch item in batch. To retrieve the next page of the items. You need to set searchAfter in search criteria from previous result.
+            example: []
+      description: Hierarchy search criteria
+    SortField:
+      type:
+      - object
+      - 'null'
+      properties:
+        field:
+          type: string
+          description: 'Fields that will be sorted upon. Ex: gtin, informationProviderGLN and targetMarket etc.'
+        desc:
+          type: boolean
+      description: Fields that will be sorted upon
+      example:
+      - field: lastModifiedDate
+        desc: 'true'
+      - field: gtin
+        desc: 'false'
+    HierarchyDetails:
+      type: object
+      properties:
+        gtin:
+          type: string
+          description: Item GTIN.
+          example: 03007687545289
+        informationProviderGLN:
+          type: string
+          description: Information provider GLN.
+        targetMarket:
+          type: string
+          description: Target market.
+        hierarchy:
+          type: array
+          description: Item hierarchy list.
+          items:
+            $ref: '#/components/schemas/ItemFetchHierarchy'
+      description: Item hierarchy details
     ItemFetchRequest:
       type: object
       properties:
@@ -400,90 +452,43 @@ components:
             description: This field is used to fetch item in batch. To retrieve the next page of the items. You need to set searchAfter in search criteria from previous result.
             example: []
       description: Product search criteria object
-    LastModifiedDate:
-      type:
-      - object
-      - 'null'
-      properties:
-        from:
-          $ref: '#/components/schemas/DateField'
-        to:
-          $ref: '#/components/schemas/DateField'
-      description: Item last modified date
-      example:
-        from:
-          date: '2023-01-01'
-          op: GTE
-        to:
-          date: '2023-01-31'
-          op: LTE
-    DateField:
+    HierarchyFetchResult:
       type: object
       properties:
-        date:
-          type: string
-          description: Date
-          example: '2022-01-15T00:00:00'
-        op:
-          type: string
-          description: Date comparison operation type (ENUM)
-          example: GT
-          enum:
-          - GT
-          - GTE
-          - LT
-          - LTE
-          - EQ
-      description: LastModifiedDate To
-    HierarchyDetails:
-      type: object
-      properties:
-        gtin:
-          type: string
-          description: Item GTIN.
-          example: 03007687545289
-        informationProviderGLN:
-          type: string
-          description: Information provider GLN.
-        targetMarket:
-          type: string
-          description: Target market.
-        hierarchy:
+        hierarchies:
           type: array
-          description: Item hierarchy list.
+          description: Hierarchies of the item.
           items:
-            $ref: '#/components/schemas/ItemFetchHierarchy'
-      description: Item hierarchy details
-    ItemFetchHierarchy:
-      type: object
-      properties:
-        parentGtin:
+            $ref: '#/components/schemas/HierarchyDetails'
+        message:
           type: string
-        gtin:
-          type: string
-        quantity:
-          type: string
-        children:
+          description: Response message.
+          example: To retrieve the next page of products, pick what you have received in searchAfter and set it in next request.
+        searchAfter:
           type: array
+          description: This value is used to fetch next page of hierarchies.
+          example: '[00637827872406,"US"]'
           items:
-            $ref: '#/components/schemas/ItemFetchHierarchy'
-      description: Hierarchy mapping
-    SortField:
-      type:
-      - object
-      - 'null'
+            type: object
+            description: This value is used to fetch next page of hierarchies.
+            example: '[00637827872406,"US"]'
+      description: Hierarchy search result
+    ItemFetchError:
       properties:
-        field:
+        requestId:
           type: string
-          description: 'Fields that will be sorted upon. Ex: gtin, informationProviderGLN and targetMarket etc.'
-        desc:
-          type: boolean
-      description: Fields that will be sorted upon
-      example:
-      - field: lastModifiedDate
-        desc: 'true'
-      - field: gtin
-        desc: 'false'
+          description: An unique id generated at server end to track processing of this request
+          example: '12222'
+        code:
+          type: string
+          description: Error code
+          example: '[INTERNAL_SERVER_ERROR | REQUIRED_HEADER_APPID_MISSING]'
+        reason:
+          type: string
+          description: Error reason in human readable form
+          example: appId is missing
+      description: Error response object. you will receive this object when there is an error in server side in processing
+      example: '{"requestId":1334426,"code":"REQUIRED_HEADER_APPID_MISSING", "reason":"appId is missing in header" }'
     ItemFetchResult:
       type: object
       properties:
@@ -516,6 +521,62 @@ components:
             description: This field is used to fetch item in batch. To retrieve the next page of the items. You need to set it in search criteria.
             example: '[00637827872406,"US"]'
       description: Product search result
+    DateField:
+      type: object
+      properties:
+        date:
+          type: string
+          description: Date
+          example: '2022-01-15T00:00:00'
+        op:
+          type: string
+          description: Date comparison operation type (ENUM)
+          example: GT
+          enum:
+          - GT
+          - GTE
+          - LT
+          - LTE
+          - EQ
+      description: LastModifiedDate To
+    FetchFields:
+      type:
+      - object
+      - 'null'
+      properties:
+        include:
+          uniqueItems: true
+          type: array
+          description: 'To retrieve subset of attributes from item. Ex: ["gtin","informationProviderGLN","targetMarket","lastModifiedDate","brandName","gpcCategory","externalFileLink"]'
+          example: []
+          items:
+            type: string
+            description: 'To retrieve subset of attributes from item. Ex: ["gtin","informationProviderGLN","targetMarket","lastModifiedDate","brandName","gpcCategory","externalFileLink"]'
+            example: '[]'
+        exclude:
+          uniqueItems: true
+          type: array
+          description: 'To abandon some of attributes from item. Ex: ["*.gln","externalFileLink.authorizedRecipients"]'
+          example: []
+          items:
+            type: string
+            description: 'To abandon some of attributes from item. Ex: ["*.gln","externalFileLink.authorizedRecipients"]'
+            example: '[]'
+      description: Fields to be include or exclude in result; By default all fields will be included
+    ItemFetchHierarchy:
+      type: object
+      properties:
+        parentGtin:
+          type: string
+        gtin:
+          type: string
+        quantity:
+          type: string
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/ItemFetchHierarchy'
+      description: Hierarchy mapping
     Item:
       type: object
       properties:
@@ -539,64 +600,3 @@ components:
             example: {}
           description: Item as map
           example: {}
-    FetchHierarchyRequest:
-      type: object
-      properties:
-        gtin:
-          type:
-          - array
-          - 'null'
-          description: Item GTIN array
-          example: []
-          items:
-            type:
-            - string
-            - 'null'
-            description: Item GTIN array
-            example: '[]'
-        ipGln:
-          maxLength: 14
-          minLength: 14
-          type:
-          - string
-          - 'null'
-          description: Information Provider GLN
-          format: d{14}
-          example: 0838016005012
-        lastModifiedDate:
-          $ref: '#/components/schemas/LastModifiedDate'
-        sortFields:
-          uniqueItems: true
-          type:
-          - array
-          - 'null'
-          description: Fields that will be sorted upon
-          example:
-          - field: lastModifiedDate
-            desc: 'true'
-          - field: gtin
-            desc: 'false'
-          items:
-            $ref: '#/components/schemas/SortField'
-        searchAfter:
-          type:
-          - array
-          - 'null'
-          description: This field is used to fetch item in batch. To retrieve the next page of the items. You need to set searchAfter in search criteria from previous result.
-          example: []
-          items:
-            type:
-            - object
-            - 'null'
-            description: This field is used to fetch item in batch. To retrieve the next page of the items. You need to set searchAfter in search criteria from previous result.
-            example: []
-      description: Hierarchy search criteria
-    ItemCount:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: This is total product count for given criteria.
-          format: int64
-          example: 1000
-      description: Product count result
