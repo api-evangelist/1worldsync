@@ -1,0 +1,12 @@
+{
+ "url": "https://content1-api.1worldsync.com/v3/api-docs",
+ "requested_url": "https://content1-api.1worldsync.com/v3/api-docs",
+ "status": 200,
+ "content_type": "application/json",
+ "bytes": 16491,
+ "sha256": "6f66dfce857e3c916c137815cc2c7c96b0abb9c84feb6e4935f8887b6b98b572",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}
