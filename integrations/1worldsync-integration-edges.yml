@@ -1,0 +1,94 @@
+edges:
+- partner_name: GS1 GDSN (certified data pools)
+  partner: gs1
+  partner_match: register
+  type: register
+  direction: partner-built
+  evidence: https://www.gs1.org/services/gdsn/certified-data-pools-list
+  category: GDSN data pool
+  channel: standard-directory
+  relationship: standard-participant
+  contract_reference:
+    register: GS1 GDSN certified data pools (gs1.org/services/gdsn/certified-data-pools-list)
+    spec_file: null
+    standard: GS1 GDSN
+    role: GDSN certified data pool
+    registered_name: 1WorldSync, by Syndigo
+    data_pool: 1WorldSync Item Management (IM); 1WorldSync Data Sync Engine
+    website: http://www.1worldsync.com
+    matched_domain: 1worldsync.com
+    matched_by: domain
+    source_recipient: both
+    established_connections: '1WorldSync Item Management (IM): 47; 1WorldSync Data Sync Engine: 43'
+    gdm_2_4_compliant: false
+    certified_products:
+    - product: Item
+      lapsed: false
+    - product: Price
+      lapsed: false
+    signal_note: certified_products = one entry per GS1-certified GDSN FUNCTIONALITY (Item, Price); established_connections
+      and GDM compliance are context, never read
+    detected_by: sweep-consumer-goods.py
+    detected: '2026-10-15'
+  detected_by: sweep-consumer-goods.py
+  first_seen: '2026-10-15'
+- partner_name: GS1 GDSN (certified data pools)
+  partner: gs1
+  partner_match: register
+  type: register
+  direction: partner-built
+  evidence: https://www.gs1.org/services/gdsn/certified-data-pools-list
+  category: GDSN data pool
+  channel: standard-directory
+  relationship: compatible
+  shape: gdsn
+  evidence_kind: conformance-register
+  degree: certified
+  report_only: true
+  contract_reference:
+    register: GS1 GDSN certified data pools (gs1.org/services/gdsn/certified-data-pools-list)
+    spec_file: null
+    standard: GS1 GDSN
+    role: gdsn-certified-data-pool
+    registered_name: 1WorldSync, by Syndigo
+    matched_domain: 1worldsync.com
+    detected_by: sweep-consumer-goods.py
+    detected: '2026-10-15'
+  detected_by: sweep-consumer-goods.py
+  first_seen: '2026-10-15'
+- partner_name: GS1 US Solution Partner Program
+  partner: gs1
+  partner_match: register
+  type: register
+  direction: partner-built
+  evidence: https://www.gs1us.org/services/find-gs1-us-solution-partner/profiles
+  category: GS1 US Solution Partner
+  channel: standard-directory
+  relationship: standard-participant
+  contract_reference:
+    register: GS1 US Solution Partner profiles (gs1us.org)
+    spec_file: null
+    standard: GS1 standards (GTIN, barcodes, RFID/EPC, traceability)
+    role: gs1-us-solution-partner
+    registered_name: 1WorldSync, Inc.
+    website: https://1worldsync.com/contact-us/#america
+    matched_domain: 1worldsync.com
+    matched_by: domain
+    solution_areas:
+    - FSMA Rule 204
+    - 2D
+    signal_note: 'participation only: program membership is vetted, not a conformance test; solution_areas are context,
+      never read'
+    detected_by: sweep-consumer-goods.py
+    detected: '2026-10-15'
+  detected_by: sweep-consumer-goods.py
+  first_seen: '2026-10-15'
+generated: '2026-10-15'
+method: searched
+source:
+- https://www.gs1.org/services/gdsn/certified-data-pools-list
+- https://www.gs1us.org/services/find-gs1-us-solution-partner/profiles
+checked:
+- https://www.gs1.org/services/gdsn/certified-data-pools-list
+- https://www.gs1us.org/services/find-gs1-us-solution-partner/profiles
+- https://www.spscommerce.com/partner-community/directory/
