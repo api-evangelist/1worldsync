@@ -110,6 +110,21 @@ edges:
     status: Acquired by Syndigo
   detected_by: sweep-vc-portfolios.py
   first_seen: '2026-10-21'
+- partner_name: Amazon Selling Partner Appstore
+  partner: amazon-seller-central
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://sellercentral.amazon.com/selling-partner-appstore/dp/amzn1.sp.solution.ef225ef2-871e-4600-9b50-cfb1b30fb89e
+  mirror_of: amazon-seller-central/integrations/amazon-seller-central-integration-edges.yml
+  apps:
+  - ContentCast A+ Content Manager
+  detected: '2026-10-21'
+  detected_by: sweep-amazon-sp-api-appstore.py
 generated: '2026-10-15'
 method: searched
 source:
@@ -125,3 +140,6 @@ checked:
 - https://www.indexventures.com/companies/
 - https://www.sequoiacap.com/our-companies/
 - https://www.sequoiacap.com/sitemap.xml
+- https://advertising.amazon.com/partners/directory
+- https://sellercentral.amazon.com/gspn
+- https://sellercentral.amazon.com/selling-partner-appstore
