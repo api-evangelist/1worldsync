@@ -34,7 +34,7 @@
     signal_note: certified_products = one entry per GS1-certified GDSN FUNCTIONALITY (Item, Price); established_connections
       and GDM compliance are context, never read
     detected_by: sweep-consumer-goods.py
-    detected: '2026-10-15'
+    detected: '2026-10-19'
   status: not-a-workflow
   arazzo: null
 - slug: 1worldsync-gs1-us-solution-partner-program
@@ -62,6 +62,34 @@
     signal_note: 'participation only: program membership is vetted, not a conformance test; solution_areas are context,
       never read'
     detected_by: sweep-consumer-goods.py
-    detected: '2026-10-15'
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: 1worldsync-battery-ventures
+  label: Battery Ventures
+  partner: battery-ventures
+  partner_name: Battery Ventures
+  category: vc portfolio participation
+  type: register
+  channel: standard-directory
+  evidence: https://www.battery.com/company/1worldsync/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: Battery Ventures companies (battery.com/company/, the page's own admin-ajax list + company pages)
+    standard: null
+    spec_file: null
+    role: vc-portfolio-company
+    registered_name: 1WorldSync
+    register_id: https://www.battery.com/company/1worldsync/
+    register_country: Chicago, Illinois
+    register_website: http://www.1worldsync.com/
+    matched_domain: 1worldsync.com
+    matched_by: domain
+    signal_note: 'participation only: the venture firm''s own published portfolio lists the company (investment);
+      an ownership and participation record, not conformance or certification'
+    detected_by: sweep-vc-portfolios.py
+    detected: '2026-10-21'
+    status: Acquired by Syndigo
   status: not-a-workflow
   arazzo: null
