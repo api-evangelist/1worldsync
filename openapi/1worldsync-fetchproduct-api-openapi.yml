@@ -600,3 +600,9 @@ components:
           - LTE
           - EQ
       description: LastModifiedDate To
+x-provenance:
+  method: harvested
+  publisher: 1WorldSync
+  source: https://content1-api.1worldsync.com/v3/api-docs
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
